@@ -29,6 +29,8 @@ export class AddFormMotherComponent implements OnInit{
   p5 = 0;
   p2 = 0;
   p3 = 0;
+  p6 = 0;
+  p7= 0;
   p9= 0;
 
   formProgress = 0;
@@ -51,32 +53,42 @@ export class AddFormMotherComponent implements OnInit{
   onKey(event: any) {
 
     if( this.motherToAdd.firstnameMother?.length!>0){
-      this.p1 = 10;
+      this.p1 = 100/7;
     }else if(this.motherToAdd.firstnameMother?.length! == 0){
       this.p1 = 0;
     }
     if( this.motherToAdd.lastnameMother?.length!>0){
-      this.p2 = 10;
+      this.p2 = 100/7;
     }else if(this.motherToAdd.lastnameMother?.length! == 0){
       this.p2 = 0;
     }
     if( this.motherToAdd.addressMother?.length!>0){
-      this.p3 = 10;
+      this.p3 = 100/7;
     }else if(this.motherToAdd.addressMother?.length! == 0){
       this.p3 = 0;
     }
     if( this.motherToAdd.cityOfOriginMother?.length!>0){
-      this.p4 = 10;
+      this.p4 = 100/7;
     }else if(this.motherToAdd.cityOfOriginMother?.length! == 0){
       this.p4 = 0;
     }
     if( this.motherToAdd.zipOfOriginMother?.length!>0){
-      this.p5 = 10;
+      this.p5 = 100/7;
     }else if(this.motherToAdd.zipOfOriginMother?.length! == 0){
       this.p5 = 0;
     }
+    if( this.motherToAdd.statusMother?.length!>0){
+      this.p6 = 100/7;
+    }else if(this.motherToAdd.statusMother?.length! == 0){
+      this.p6 = 0;
+    }
+    if( this.motherToAdd.stateOfOriginMother?.length!>0){
+      this.p7 = 100/7;
+    }else if(this.motherToAdd.stateOfOriginMother?.length! == 0){
+      this.p7 = 0;
+    }
 
-    this.formProgress = this.p1+this.p2+this.p3+this.p4+this.p5;
+    this.formProgress = this.p1+this.p2+this.p3+this.p4+this.p5+this.p6+this.p7;
   }
   addMother(){
     this.motherService.addMother(this.motherToAdd, this.idCand).

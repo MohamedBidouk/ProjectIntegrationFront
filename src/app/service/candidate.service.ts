@@ -22,6 +22,11 @@ export class CandidateService {
     return this.http.post<Candidate>(this.apiURL, cand)
   }
 
+  updateCandidate( cand: Candidate): Observable<Candidate>{
+    return this.http.put<Candidate>(this.apiURL, cand)
+  }
+
+
   deleteCandidate(id: number){
     const url = `${this.apiURL}/${id}`;
     return this.http.delete(url);

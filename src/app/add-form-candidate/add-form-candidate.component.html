@@ -56,7 +56,7 @@
         <div class="col-md-4" >
           <label >State of origin</label>
           <select type="text" [(ngModel)]= "candidate.stateOfOrigin" (change)="onKey($event)"  name="stateOfOrigin" class="form-control">
-            <option [ngValue]="null" disabled>Select Country</option>
+            <option [ngValue]="null" disabled>Select State</option>
             <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
           </select>
         </div>

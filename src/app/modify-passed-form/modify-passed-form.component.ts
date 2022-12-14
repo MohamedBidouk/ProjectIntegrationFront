@@ -16,6 +16,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ModifyPassedFormComponent implements OnInit{
 
+  selectedFiles!: FileList;
+  currentFile!: File;
   idCandidate!: number;
   candidate!: Candidate;
   father!: Father;
@@ -24,6 +26,22 @@ export class ModifyPassedFormComponent implements OnInit{
   fileInfos!: Observable<any>;
   fileInfosFather!: Observable<any>;
   fileInfosMother!: Observable<any>;
+  listOfStates: String[]= ["Nabeul", "Tunis", "Ariana", "Manouba"];
+  listOfGender: String[]= ["Male", "Female"];
+
+
+  p1 = 0;
+  p4 = 0;
+  p5 = 0;
+  p2 = 0;
+  p3 = 0;
+  p9= 0;
+
+  formProgress = 0;
+  progress = 0;
+  message = '';
+
+  isAdded: boolean = false;
 
   constructor(private motherService: MotherService,
               private fatherService: FatherService,
@@ -49,5 +67,42 @@ export class ModifyPassedFormComponent implements OnInit{
     this.fileInfos = this.uploadService.getFiles(this.activatedRoute.snapshot.params['idCandidate']);
     this.fileInfosFather = this.uploadService.getFilesFather(this.activatedRoute.snapshot.params['idCandidate']);
     this.fileInfosMother = this.uploadService.getFilesMother(this.activatedRoute.snapshot.params['idCandidate']);
+  }
+  onKey(event: any) {
+
+    if( this.father.firstnameFather?.length!>0){
+      this.p1 = 10;
+    }else if(this.father.firstnameFather?.length! == 0){
+      this.p1 = 0;
+    }
+    if( this.father.lastnameFather?.length!>0){
+      this.p2 = 10;
+    }else if(this.father.lastnameFather?.length! == 0){
+      this.p2 = 0;
+    }
+    if( this.father.addressFather?.length!>0){
+      this.p3 = 10;
+    }else if(this.father.addressFather?.length! == 0){
+      this.p3 = 0;
+    }
+    if( this.father.cityOfOriginFather?.length!>0){
+      this.p4 = 10;
+    }else if(this.father.cityOfOriginFather?.length! == 0){
+      this.p4 = 0;
+    }
+    if( this.father.zipOfOriginFather?.length!>0){
+      this.p5 = 10;
+    }else if(this.father.zipOfOriginFather?.length! == 0){
+      this.p5 = 0;
+    }
+
+    this.formProgress = this.p1+this.p2+this.p3+this.p4+this.p5;
+  }
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  updateFather(){
+
   }
 }

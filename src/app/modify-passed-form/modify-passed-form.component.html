@@ -1,1 +1,543 @@
-<p>modify-passed-form works!</p>
+<div class="container">
+  <form>
+    <!--<div *ngIf="formProgress" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ formProgress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: formProgress + '%' }"
+      >
+        {{ formProgress }}%
+      </div>
+    </div>-->
+    <div >
+      <div class="row mt-1">
+        <div class="col-md-6 " >
+          <label >Firstname</label>
+          <input type="text"[(ngModel)]= "candidate.firstname"  name="firstname" class="form-control">
+        </div>
+        <div class="col-md-6 " >
+          <label >Lastname</label>
+          <input type="text"[(ngModel)]= "candidate.lastname"  name="lastname" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >Address</label>
+          <input type="text"[(ngModel)]= "candidate.address"  name="adress" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >Status</label>
+          <select type="text"[(ngModel)]= "candidate.status"  name="stateOfStudy" class="form-control">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Divorced with chlidren</option>
+          </select>
+        </div>
+        <div class="col-md-4 ">
+          <div class="col-md-2">
+            <label> Sexe : </label>
+          </div>
+          <div class="col-md-2 form-check form-check-inline" *ngFor="let gender of listOfGender; let i = index">
+            <input  class="form-check-input" id="gender{{i}}" name="gender" type="radio"
+                   [value]="gender" [(ngModel)]="candidate.sexe" />
+            <label class="form-check-label" for="gender{{i}}">{{gender}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >cityOfOrigin</label>
+          <input type="text"[(ngModel)]= "candidate.cityOfOrigin"  name="cityOfOrigin" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "candidate.stateOfOrigin"   name="stateOfOrigin" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of origin</label>
+          <input type="text"[(ngModel)]= "candidate.zipOfOrigin"  name="zipOfOrigin" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >city Of Origin</label>
+          <input type="text"[(ngModel)]= "candidate.cityOfStudy"  name="cityOfStudy" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "candidate.stateOfStudy"  name="stateOfStudy" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of Study</label>
+          <input type="text"[(ngModel)]= "candidate.zipOfStudy"  name="zipOfStudy" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row mt-1 mb-3">
+      <div class="mb-3 col-md-4">
+        <label for="IdentityFile" class="form-label">Identity Card</label>
+        <input class="form-control" type="file" id="IdentityFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="approveFile" class="form-label">approve</label>
+        <input class="form-control" type="file" id="approveFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="registrationFile" class="form-label">Registration approve</label>
+        <input class="form-control" type="file" id="registrationFile">
+      </div>
+    </div>-->
+    <!--<div *ngIf="!isAdded" class="mt-2">
+      <button type="submit" (click)="addCandidate()"class="btn btn-primary">Next</button>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+
+      <div class="col-4">
+        <button class="btn btn-primary btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+      </div>
+    </div>-->
+
+    <!--<div *ngIf="currentFile" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>-->
+
+    <div class="card mt-3" >
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfos | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2">
+<!--      <button type="submit" (click)="passToFatherForm()"class="btn btn-primary">Next</button>-->
+    </div>
+  </form>
+</div>
+
+
+<div class="container">
+  <form>
+    <!--<div *ngIf="formProgress" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ formProgress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: formProgress + '%' }"
+      >
+        {{ formProgress }}%
+      </div>
+    </div>-->
+    <div >
+      <div class="row mt-1">
+        <div class="col-md-6 " >
+          <label >Firstname</label>
+          <input type="text"[(ngModel)]= "father.firstnameFather"  name="firstname" class="form-control">
+        </div>
+        <div class="col-md-6 " >
+          <label >Lastname</label>
+          <input type="text"[(ngModel)]= "father.lastnameFather"  name="lastname" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >Address</label>
+          <input type="text"[(ngModel)]= "father.addressFather"  name="adress" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >Status</label>
+          <select type="text"[(ngModel)]= "father.statusFather"  name="stateOfStudy" class="form-control">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Divorced with chlidren</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >cityOfOrigin</label>
+          <input type="text"[(ngModel)]= "father.cityOfOriginFather"  name="cityOfOrigin" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "father.stateOfOriginFather"   name="stateOfOrigin" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of origin</label>
+          <input type="text"[(ngModel)]= "father.zipOfOriginFather"  name="zipOfOrigin" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row mt-1 mb-3">
+      <div class="mb-3 col-md-4">
+        <label for="IdentityFile" class="form-label">Identity Card</label>
+        <input class="form-control" type="file" id="IdentityFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="approveFile" class="form-label">approve</label>
+        <input class="form-control" type="file" id="approveFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="registrationFile" class="form-label">Registration approve</label>
+        <input class="form-control" type="file" id="registrationFile">
+      </div>
+    </div>
+    <div class="mt-2">
+      <button *ngIf="!isAdded" type="submit" (click)="addFather()"class="btn btn-primary">Next</button>
+    </div>-->
+    <!-- <div class="row mt-4">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+
+      <div class="col-4">
+         <button class="btn btn-primary btn-sm" [disabled]="!selectedFiles" (click)="uploadFather()">
+           Upload
+         </button>
+       </div>
+     </div>
+
+     <div *ngIf="currentFile" class="progress my-3">
+       <div
+         class="progress-bar progress-bar-info progress-bar-striped"
+         role="progressbar"
+         attr.aria-valuenow="{{ progress }}"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         [ngStyle]="{ width: progress + '%' }"
+       >
+         {{ progress }}%
+       </div>
+     </div>
+
+     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>-->
+
+    <div class="card mt-3" >
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfosFather | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2">
+<!--      <button type="submit" (click)="passToMotherForm()"class="btn btn-primary">Next</button>-->
+    </div>
+  </form>
+</div>
+<div class="container">
+  <form>
+    <!--<div *ngIf="formProgress" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ formProgress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: formProgress + '%' }"
+      >
+        {{ formProgress }}%
+      </div>
+    </div>-->
+    <div >
+      <div class="row mt-1">
+        <div class="col-md-6 " >
+          <label >Firstname</label>
+          <input type="text"[(ngModel)]= "candidate.firstname"  name="firstname" class="form-control">
+        </div>
+        <div class="col-md-6 " >
+          <label >Lastname</label>
+          <input type="text"[(ngModel)]= "candidate.lastname"  name="lastname" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >Address</label>
+          <input type="text"[(ngModel)]= "candidate.address"  name="adress" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >Status</label>
+          <select type="text"[(ngModel)]= "candidate.status"  name="stateOfStudy" class="form-control">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Divorced with chlidren</option>
+          </select>
+        </div>
+        <div class="col-md-4 ">
+          <div class="col-md-2">
+            <label> Sexe : </label>
+          </div>
+          <div class="col-md-2 form-check form-check-inline" *ngFor="let gender of listOfGender; let i = index">
+            <input  class="form-check-input" id="gender{{i}}" name="gender" type="radio"
+                    [value]="gender" [(ngModel)]="candidate.sexe" />
+            <label class="form-check-label" for="gender{{i}}">{{gender}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >cityOfOrigin</label>
+          <input type="text"[(ngModel)]= "candidate.cityOfOrigin"  name="cityOfOrigin" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "candidate.stateOfOrigin"   name="stateOfOrigin" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of origin</label>
+          <input type="text"[(ngModel)]= "candidate.zipOfOrigin"  name="zipOfOrigin" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >city Of Origin</label>
+          <input type="text"[(ngModel)]= "candidate.cityOfStudy"  name="cityOfStudy" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "candidate.stateOfStudy"  name="stateOfStudy" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of Study</label>
+          <input type="text"[(ngModel)]= "candidate.zipOfStudy"  name="zipOfStudy" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row mt-1 mb-3">
+      <div class="mb-3 col-md-4">
+        <label for="IdentityFile" class="form-label">Identity Card</label>
+        <input class="form-control" type="file" id="IdentityFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="approveFile" class="form-label">approve</label>
+        <input class="form-control" type="file" id="approveFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="registrationFile" class="form-label">Registration approve</label>
+        <input class="form-control" type="file" id="registrationFile">
+      </div>
+    </div>-->
+    <!--<div *ngIf="!isAdded" class="mt-2">
+      <button type="submit" (click)="addCandidate()"class="btn btn-primary">Next</button>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+
+      <div class="col-4">
+        <button class="btn btn-primary btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+      </div>
+    </div>-->
+
+    <!--<div *ngIf="currentFile" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>-->
+
+    <div class="card mt-3" >
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfos | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2">
+      <!--      <button type="submit" (click)="passToFatherForm()"class="btn btn-primary">Next</button>-->
+    </div>
+  </form>
+</div>
+
+
+<div class="container">
+  <form>
+    <!--<div *ngIf="formProgress" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ formProgress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: formProgress + '%' }"
+      >
+        {{ formProgress }}%
+      </div>
+    </div>-->
+    <div >
+      <div class="row mt-1">
+        <div class="col-md-6 " >
+          <label >Firstname</label>
+          <input type="text"[(ngModel)]= "mother.firstnameMother"  name="firstname" class="form-control">
+        </div>
+        <div class="col-md-6 " >
+          <label >Lastname</label>
+          <input type="text"[(ngModel)]= "mother.lastnameMother"  name="lastname" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >Address</label>
+          <input type="text"[(ngModel)]= "mother.addressMother"  name="adress" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >Status</label>
+          <select type="text"[(ngModel)]= "mother.statusMother"  name="stateOfStudy" class="form-control">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Divorced with chlidren</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >cityOfOrigin</label>
+          <input type="text"[(ngModel)]= "mother.cityOfOriginMother"  name="cityOfOrigin" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "mother.stateOfOriginMother"   name="stateOfOrigin" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of origin</label>
+          <input type="text"[(ngModel)]= "mother.zipOfOriginMother"  name="zipOfOrigin" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row mt-1 mb-3">
+      <div class="mb-3 col-md-4">
+        <label for="IdentityFile" class="form-label">Identity Card</label>
+        <input class="form-control" type="file" id="IdentityFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="approveFile" class="form-label">approve</label>
+        <input class="form-control" type="file" id="approveFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="registrationFile" class="form-label">Registration approve</label>
+        <input class="form-control" type="file" id="registrationFile">
+      </div>
+    </div>
+    <div class="mt-2">
+      <button *ngIf="!isAdded" type="submit" (click)="addFather()"class="btn btn-primary">Next</button>
+    </div>-->
+    <div class="row mt-4">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+
+      <div class="col-4">
+         <button class="btn btn-primary btn-sm" [disabled]="!selectedFiles" (click)="updateFather()">
+           Upload
+         </button>
+       </div>
+     </div>
+
+     <div *ngIf="currentFile" class="progress my-3">
+       <div
+         class="progress-bar progress-bar-info progress-bar-striped"
+         role="progressbar"
+         attr.aria-valuenow="{{ progress }}"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         [ngStyle]="{ width: progress + '%' }"
+       >
+         {{ progress }}%
+       </div>
+     </div>
+
+     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+    <div class="card mt-3" >
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfosMother | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2">
+      <!--      <button type="submit" (click)="passToMotherForm()"class="btn btn-primary">Next</button>-->
+    </div>
+  </form>
+</div>
+
