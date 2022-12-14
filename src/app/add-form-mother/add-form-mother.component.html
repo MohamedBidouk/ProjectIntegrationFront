@@ -38,6 +38,23 @@
           </select>
         </div>
       </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >cityOfOrigin</label>
+          <input type="text"[(ngModel)]= "motherToAdd.cityOfOriginMother" (keyup)="onKey($event)" name="cityOfOrigin" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >State of origin</label>
+          <select type="text" [(ngModel)]= "motherToAdd.stateOfOriginMother" (change)="onKey($event)"  name="stateOfOrigin" class="form-control">
+            <option [ngValue]="null" disabled>Select Country</option>
+            <option *ngFor="let state of listOfStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+        <div class="col-md-4" >
+          <label >Zip of origin</label>
+          <input type="text"[(ngModel)]= "motherToAdd.zipOfOriginMother" (keyup)="onKey($event)" name="zipOfOrigin" class="form-control">
+        </div>
+      </div>
     </div>
 
     <!--<div class="row mt-1 mb-3">
@@ -55,7 +72,7 @@
       </div>
     </div>-->
     <div class="mt-2">
-      <button type="submit" (click)="addMother()"class="btn btn-primary">Next</button>
+      <button *ngIf="!isAdded" type="submit" (click)="addMother()"class="btn btn-primary">Next</button>
     </div>
     <div class="row mt-4">
       <div class="col-8">
@@ -98,7 +115,7 @@
       </ul>
     </div>
     <div class="mt-2">
-<!--      <button type="submit" (click)="passToMotherForm()"class="btn btn-primary">Next</button>-->
+<button type="submit" (click)="passToPassedForm()"class="btn btn-primary">Next</button>
     </div>
   </form>
 </div>

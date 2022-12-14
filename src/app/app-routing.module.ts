@@ -6,6 +6,7 @@ import {AddFormCandidateComponent} from "./add-form-candidate/add-form-candidate
 import {LoginComponent} from "./login/login.component";
 import {AddFormFatherComponent} from "./add-form-father/add-form-father.component";
 import {AddFormMotherComponent} from "./add-form-mother/add-form-mother.component";
+import {AddPassedFormComponent} from "./add-passed-form/add-passed-form.component";
 
 const routes: Routes = [
   {path: "candidates", component: CandidateComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "add-form-cand", component: AddFormCandidateComponent},
   {path: "add-form-father/:idCandidate", component: AddFormFatherComponent},
-  {path: "add-form-mother/:idCandidate", component:AddFormMotherComponent}
+  {path: "add-form-mother/:idCandidate", component:AddFormMotherComponent},
+  {path: "add-pass-form/:idCandidate", component:AddPassedFormComponent}
 ];
 
 @NgModule({

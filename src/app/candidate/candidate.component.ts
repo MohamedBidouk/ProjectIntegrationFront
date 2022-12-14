@@ -10,6 +10,7 @@ import {AuthService} from "../service/auth.service";
 })
 export class CandidateComponent implements OnInit{
   candidates!: Candidate[];
+
   constructor(private candidateService: CandidateService,
               public authService: AuthService) {
   }

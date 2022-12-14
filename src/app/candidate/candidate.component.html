@@ -21,7 +21,7 @@
           <td>{{student.bacgeneration}}</td>
 <!--          <td>{{student.category.nameCat}}</td>-->
           <td><a *ngIf="authService.isAdmin()" class="btn btn-primary" [routerLink]="['/formulaire']">Consult</a></td>
-          <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateStudent',student.id]">Accept</a></td>
+          <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/add-pass-form/',student.id]">Accept</a></td>
 <!--          <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="deleteStudent(student)">Decline</a></td>-->
 
         </tr>

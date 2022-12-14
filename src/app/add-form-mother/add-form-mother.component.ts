@@ -82,10 +82,13 @@ export class AddFormMotherComponent implements OnInit{
     this.motherService.addMother(this.motherToAdd, this.idCand).
     subscribe({next:(value: Mother) =>{
         this.addedMotherId = value.id!;
+        this.isAdded = true;
       }});
   }
 
-
+  passToPassedForm(){
+    this.router.navigate(['add-pass-form',this.idCand]);
+  }
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;

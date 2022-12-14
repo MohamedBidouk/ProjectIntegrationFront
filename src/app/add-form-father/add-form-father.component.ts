@@ -79,6 +79,7 @@ export class AddFormFatherComponent implements OnInit{
     this.fatherService.addFather(this.fatherToAdd, this.idCand).
       subscribe({next:(value: Father) =>{
         this.addedFatherId = value.id!;
+        this.isAdded = true;
     }});
   }
 
