@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {MotherService} from "../../mother.service";
-import {UploadFileService} from "../../upload-file.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Candidate} from "../model/candidate.model";
 import {Father} from "../model/father.model";
 import {Mother} from "../model/mother.model";
+import {Observable} from "rxjs";
+import {MotherService} from "../../mother.service";
 import {FatherService} from "../../father.service";
 import {CandidateService} from "../service/candidate.service";
-import {Observable} from "rxjs";
+import {UploadFileService} from "../../upload-file.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-add-passed-form',
-  templateUrl: './add-passed-form.component.html',
-  styleUrls: ['./add-passed-form.component.css']
+  selector: 'app-modify-passed-form',
+  templateUrl: './modify-passed-form.component.html',
+  styleUrls: ['./modify-passed-form.component.css']
 })
-export class AddPassedFormComponent implements OnInit{
+export class ModifyPassedFormComponent implements OnInit{
 
   idCandidate!: number;
   candidate!: Candidate;
@@ -50,5 +50,4 @@ export class AddPassedFormComponent implements OnInit{
     this.fileInfosFather = this.uploadService.getFilesFather(this.activatedRoute.snapshot.params['idCandidate']);
     this.fileInfosMother = this.uploadService.getFilesMother(this.activatedRoute.snapshot.params['idCandidate']);
   }
-
 }

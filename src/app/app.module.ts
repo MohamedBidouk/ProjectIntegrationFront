@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AddFormFatherComponent } from './add-form-father/add-form-father.component';
 import { AddFormMotherComponent } from './add-form-mother/add-form-mother.component';
 import { AddPassedFormComponent } from './add-passed-form/add-passed-form.component';
+import { ModifyPassedFormComponent } from './modify-passed-form/modify-passed-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddPassedFormComponent } from './add-passed-form/add-passed-form.compon
     LoginComponent,
     AddFormFatherComponent,
     AddFormMotherComponent,
-    AddPassedFormComponent
+    AddPassedFormComponent,
+    ModifyPassedFormComponent
   ],
   imports: [
     BrowserModule,

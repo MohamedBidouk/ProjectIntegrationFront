@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <form>
     <h3> Candidate informations</h3>
     <hr class="mt-2 mb-3"/>
@@ -99,7 +99,7 @@
             </div>
           </div>
         </div>-->
-        <div class="col-md-11 ">
+        <div class="col-md-11 mb-4 ">
           <div class="card mt-3" >
             <div class="card-header">List of Files</div>
             <ul
@@ -167,6 +167,87 @@
             <p class="card-text">{{father.zipOfOriginFather}}</p>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="col-md-11 mb-4 ">
+      <div class="card mt-3" >
+        <div class="card-header">List of Files</div>
+        <ul
+          class="list-group list-group-flush"
+          *ngFor="let file of fileInfosFather | async"
+        >
+          <li class="list-group-item">
+            <a href="{{ file.url }}">{{ file.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h3> Candidate's mother informations</h3>
+    <hr class="mt-2 mb-3"/>
+
+    <div class="row mt-1">
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">firstnameFather</h5>
+            <p class="card-text">{{father.firstnameFather}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">lastnameFather</h5>
+            <p class="card-text">{{father.lastnameFather}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">addressFather</h5>
+            <p class="card-text">{{father.addressFather}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-1">
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">cityOfOriginFather</h5>
+            <p class="card-text">{{father.cityOfOriginFather}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">stateOfOriginFather</h5>
+            <p class="card-text">{{father.stateOfOriginFather}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">zipOfOriginFather</h5>
+            <p class="card-text">{{father.zipOfOriginFather}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-11 mb-4">
+      <div class="card mt-3" >
+        <div class="card-header">List of Files</div>
+        <ul
+          class="list-group list-group-flush"
+          *ngFor="let file of fileInfosMother | async"
+        >
+          <li class="list-group-item">
+            <a href="{{ file.url }}">{{ file.name }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </form>
