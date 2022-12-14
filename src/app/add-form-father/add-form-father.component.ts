@@ -82,7 +82,9 @@ export class AddFormFatherComponent implements OnInit{
     }});
   }
 
-
+  passToMotherForm(){
+    this.router.navigate(['add-form-mother',this.idCand]);
+  }
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;

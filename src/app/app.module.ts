@@ -12,6 +12,7 @@ import {TokenInterceptor} from "./service/token.interceptor";
 import { LoginComponent } from './login/login.component';
 import { AddFormFatherComponent } from './add-form-father/add-form-father.component';
 import { AddFormMotherComponent } from './add-form-mother/add-form-mother.component';
+import { AddPassedFormComponent } from './add-passed-form/add-passed-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddFormMotherComponent } from './add-form-mother/add-form-mother.compon
     AddFormCandidateComponent,
     LoginComponent,
     AddFormFatherComponent,
-    AddFormMotherComponent
+    AddFormMotherComponent,
+    AddPassedFormComponent
   ],
   imports: [
     BrowserModule,

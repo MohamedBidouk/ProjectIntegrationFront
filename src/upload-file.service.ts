@@ -9,6 +9,7 @@ export class UploadFileService {
 
   private baseUrl = 'http://localhost:8080/integration-project/candidate';
   private baseUrlFather = 'http://localhost:8080/integration-project/father';
+  private baseUrlMother = 'http://localhost:8080/integration-project/mother';
 
   constructor(private http: HttpClient) { }
 
@@ -34,13 +35,28 @@ export class UploadFileService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/${idFather}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrlFather}/${idFather}/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
     return this.http.request(req);
   }
   getFilesFather(idFather: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/father/${idFather}/filesFather`);
+    return this.http.get(`${this.baseUrlFather}/${idFather}/filesFather`);
+  }
+
+  uploadMother(file: File, idMother: number): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${this.baseUrlMother}/${idMother}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+  getFilesMother(idFather: number): Observable<any> {
+    return this.http.get(`${this.baseUrlMother}/${idFather}/filesMother`);
   }
 }
