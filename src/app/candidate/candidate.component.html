@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>CIN</th>
+          <th>firstname</th>
+          <th>lastname</th>
+          <th>bacgeneration</th>
+          <th>Category</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let student of candidates">
+        <tr >
+          <td>{{student.id}}</td>
+          <td>{{student.CIN}}</td>
+          <td>{{student.firstname}}</td>
+          <td>{{student.lastname}}</td>
+          <td>{{student.bacgeneration}}</td>
+<!--          <td>{{student.category.nameCat}}</td>-->
+          <td><a *ngIf="authService.isAdmin()" class="btn btn-primary" [routerLink]="['/formulaire']">Consult</a></td>
+          <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateStudent',student.id]">Accept</a></td>
+<!--          <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="deleteStudent(student)">Decline</a></td>-->
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
