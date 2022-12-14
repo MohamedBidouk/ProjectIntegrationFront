@@ -98,7 +98,10 @@
         <input class="form-control" type="file" id="registrationFile">
       </div>
     </div>-->
-    <div *ngIf="isAdded" class="row mt-4">
+    <div class="mt-2">
+      <button type="submit" (click)="addCandidate()"class="btn btn-primary">Next</button>
+    </div>
+    <div class="row mt-4">
       <div class="col-8">
         <label class="btn btn-default p-0">
           <input type="file" (change)="selectFile($event)" />
@@ -139,7 +142,7 @@
       </ul>
     </div>
     <div class="mt-2">
-      <button type="submit" (click)="addCandidate()"class="btn btn-primary">Next</button>
+      <button type="submit" (click)="passToFatherForm()"class="btn btn-primary">Next</button>
     </div>
   </form>
 </div>

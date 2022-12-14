@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {UploadFileService} from "../../upload-file.service";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {AddFormFatherComponent} from "../add-form-father/add-form-father.component";
 
 @Component({
   selector: 'app-add-form-candidate',
@@ -102,7 +103,7 @@ export class AddFormCandidateComponent implements OnInit{
     }else if(this.candidate.sexe?.length! == 0){
       this.p11 = 0;
     }
-    this.formProgress = this.p1+this.p2+this.p3+this.p4+this.p6+this.p7+this.p8+this.p9+this.p10+this.p11;
+    this.formProgress = this.p1+this.p2+this.p3+this.p4+this.p6+this.p5+this.p7+this.p8+this.p9+this.p10+this.p11;
   }
 
   addCandidate(){
@@ -111,7 +112,12 @@ export class AddFormCandidateComponent implements OnInit{
         this.isAdded = true;
         this.addedCandidateId = value.id!;
         this.formProgress = 0;
+
     }});
+  }
+
+  passToFatherForm(){
+    this.router.navigate(['add-form-father',this.addedCandidateId]);
   }
 
   selectFile(event: any): void {

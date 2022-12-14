@@ -1,0 +1,104 @@
+<div class="container">
+  <form>
+    <div *ngIf="formProgress" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ formProgress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: formProgress + '%' }"
+      >
+        {{ formProgress }}%
+      </div>
+    </div>
+    <div *ngIf="!isAdded">
+      <div class="row mt-1">
+        <div class="col-md-6 " >
+          <label >Firstname</label>
+          <input type="text"[(ngModel)]= "fatherToAdd.firstnameFather" (keyup)="onKey($event)" name="firstname" class="form-control">
+        </div>
+        <div class="col-md-6 " >
+          <label >Lastname</label>
+          <input type="text"[(ngModel)]= "fatherToAdd.lastnameFather" (keyup)="onKey($event)" name="lastname" class="form-control">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-4" >
+          <label >Address</label>
+          <input type="text"[(ngModel)]= "fatherToAdd.addressFather" (keyup)="onKey($event)" name="adress" class="form-control">
+        </div>
+        <div class="col-md-4" >
+          <label >Status</label>
+          <select type="text"[(ngModel)]= "fatherToAdd.statusFather" (change)="onKey($event)" name="stateOfStudy" class="form-control">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Divorced with chlidren</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row mt-1 mb-3">
+      <div class="mb-3 col-md-4">
+        <label for="IdentityFile" class="form-label">Identity Card</label>
+        <input class="form-control" type="file" id="IdentityFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="approveFile" class="form-label">approve</label>
+        <input class="form-control" type="file" id="approveFile">
+      </div>
+      <div class="mb-3 col-md-4">
+        <label for="registrationFile" class="form-label">Registration approve</label>
+        <input class="form-control" type="file" id="registrationFile">
+      </div>
+    </div>-->
+    <div class="mt-2">
+      <button type="submit" (click)="addFather()"class="btn btn-primary">Next</button>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+
+      <div class="col-4">
+        <button class="btn btn-primary btn-sm" [disabled]="!selectedFiles" (click)="uploadFather()">
+          Upload
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="currentFile" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+    <div class="card mt-3" *ngIf="isAdded">
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfos | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="addFather()"class="btn btn-primary">Next</button>
+    </div>
+  </form>
+</div>

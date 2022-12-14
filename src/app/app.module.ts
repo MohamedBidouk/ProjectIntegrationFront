@@ -10,6 +10,8 @@ import { AddFormCandidateComponent } from './add-form-candidate/add-form-candida
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./service/token.interceptor";
 import { LoginComponent } from './login/login.component';
+import { AddFormFatherComponent } from './add-form-father/add-form-father.component';
+import { AddFormMotherComponent } from './add-form-mother/add-form-mother.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { LoginComponent } from './login/login.component';
     BindingComponent,
     CandidateComponent,
     AddFormCandidateComponent,
-    LoginComponent
+    LoginComponent,
+    AddFormFatherComponent,
+    AddFormMotherComponent
   ],
   imports: [
     BrowserModule,
